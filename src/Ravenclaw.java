@@ -1,33 +1,19 @@
 import java.util.Objects;
 
-public class Ravenclaw {
-
-    private String fullName;
+public class Ravenclaw extends PersonInfo{
 
     private int mind;
     private int wisdom;
     private int wit;
     private int creation;
 
-    private int magicPower;
-    private int magicDistance;
 
     public Ravenclaw(String fullName, int mind, int wisdom, int wit, int creation, int magicPower, int magicDistance) {
-        this.fullName = fullName;
+        super(fullName, magicPower, magicDistance);
         this.mind = mind;
         this.wisdom = wisdom;
         this.wit = wit;
         this.creation = creation;
-        this.magicPower = magicPower;
-        this.magicDistance = magicDistance;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public int getMind() {
@@ -62,37 +48,17 @@ public class Ravenclaw {
         this.creation = creation;
     }
 
-    public int getMagicPower() {
-        return magicPower;
-    }
-
-    public void setMagicPower(int magicPower) {
-        this.magicPower = magicPower;
-    }
-
-    public int getMagicDistance() {
-        return magicDistance;
-    }
-
-    public void setMagicDistance(int magicDistance) {
-        this.magicDistance = magicDistance;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Ravenclaw ravenclaw = (Ravenclaw) o;
-        return mind == ravenclaw.mind && wisdom == ravenclaw.wisdom && wit == ravenclaw.wit && creation == ravenclaw.creation && magicPower == ravenclaw.magicPower && magicDistance == ravenclaw.magicDistance && Objects.equals(fullName, ravenclaw.fullName);
+        return mind == ravenclaw.mind && wisdom == ravenclaw.wisdom && wit == ravenclaw.wit && creation == ravenclaw.creation;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, mind, wisdom, wit, creation, magicPower, magicDistance);
-    }
-
-    @Override
-    public String toString() {
-        return  fullName;
+        return Objects.hash(super.hashCode(), mind, wisdom, wit, creation);
     }
 }

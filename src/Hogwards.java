@@ -1,4 +1,4 @@
-public class Hogwartz {
+public class Hogwards {
     public static void main(String[] args) {
         Gryffindor[] gryffindorStudents = {
                 new Gryffindor("Гермиона Грейнджер", 10, 15, 8, 80, 30),

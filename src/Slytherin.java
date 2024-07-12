@@ -1,8 +1,6 @@
 import java.util.Objects;
 
-public class Slytherin {
-
-    private String fullName;
+public class Slytherin extends PersonInfo{
 
     private int cunning;
     private int determination;
@@ -10,26 +8,14 @@ public class Slytherin {
     private int resource;
     private int power;
 
-    private int magicPower;
-    private int magicDistance;
 
     public Slytherin(String fullName, int cunning, int determination, int ambition, int resource, int power, int magicPower, int magicDistance) {
-        this.fullName = fullName;
+        super(fullName, magicPower, magicDistance);
         this.cunning = cunning;
         this.determination = determination;
         this.ambition = ambition;
         this.resource = resource;
         this.power = power;
-        this.magicPower = magicPower;
-        this.magicDistance = magicDistance;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public int getCunning() {
@@ -72,37 +58,17 @@ public class Slytherin {
         this.power = power;
     }
 
-    public int getMagicPower() {
-        return magicPower;
-    }
-
-    public void setMagicPower(int magicPower) {
-        this.magicPower = magicPower;
-    }
-
-    public int getMagicDistance() {
-        return magicDistance;
-    }
-
-    public void setMagicDistance(int magicDistance) {
-        this.magicDistance = magicDistance;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Slytherin slytherin = (Slytherin) o;
-        return cunning == slytherin.cunning && determination == slytherin.determination && ambition == slytherin.ambition && resource == slytherin.resource && power == slytherin.power && magicPower == slytherin.magicPower && magicDistance == slytherin.magicDistance && Objects.equals(fullName, slytherin.fullName);
+        return cunning == slytherin.cunning && determination == slytherin.determination && ambition == slytherin.ambition && resource == slytherin.resource && power == slytherin.power;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, cunning, determination, ambition, resource, power, magicPower, magicDistance);
-    }
-
-    @Override
-    public String toString() {
-        return fullName ;
+        return Objects.hash(super.hashCode(), cunning, determination, ambition, resource, power);
     }
 }

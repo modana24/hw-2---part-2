@@ -1,31 +1,17 @@
 import java.util.Objects;
 
-public class Hufflepuff {
-
-    private String fullName;
+public class Hufflepuff extends PersonInfo {
 
     private int  industrious;
     private int loyalty;
     private int honesty;
 
-    private int magicPower;
-    private int magicDistance;
 
     public Hufflepuff(String fullName, int industrious, int loyalty, int honesty, int magicPower, int magicDistance) {
-        this.fullName = fullName;
+        super(fullName, magicPower, magicDistance);
         this.industrious = industrious;
         this.loyalty = loyalty;
         this.honesty = honesty;
-        this.magicPower = magicPower;
-        this.magicDistance = magicDistance;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public int getIndustrious() {
@@ -52,38 +38,18 @@ public class Hufflepuff {
         this.honesty = honesty;
     }
 
-    public int getMagicPower() {
-        return magicPower;
-    }
-
-    public void setMagicPower(int magicPower) {
-        this.magicPower = magicPower;
-    }
-
-    public int getMagicDistance() {
-        return magicDistance;
-    }
-
-    public void setMagicDistance(int magicDistance) {
-        this.magicDistance = magicDistance;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Hufflepuff that = (Hufflepuff) o;
-        return industrious == that.industrious && loyalty == that.loyalty && honesty == that.honesty && magicPower == that.magicPower && magicDistance == that.magicDistance && Objects.equals(fullName, that.fullName);
+        return industrious == that.industrious && loyalty == that.loyalty && honesty == that.honesty;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, industrious, loyalty, honesty, magicPower, magicDistance);
-    }
-
-    @Override
-    public String toString() {
-        return  fullName;
+        return Objects.hash(super.hashCode(), industrious, loyalty, honesty);
     }
 
 }
